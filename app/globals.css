@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400&family=Cinzel:wght@400;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --cream: #F4F5F0;
+  --white: #FAFBF8;
+  --black: #0C1F10;
+  --green: #1A5230;
+  --mid: #7A7E76;
+  --border: #DDE0D6;
+  --card-hover: #ECF0E8;
+  --poem-bg: #E8EEE4;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.45;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-1 { transition-delay: 0.1s; }
+.reveal-2 { transition-delay: 0.2s; }
+.reveal-3 { transition-delay: 0.3s; }
+
+/* ── TYPOGRAPHY ── */
+.font-cinzel { font-family: 'Cinzel', serif; }
+.font-josefin { font-family: 'Josefin Sans', sans-serif; }
+.font-cormorant { font-family: 'Cormorant Garamond', serif; }
+
+/* ── ARTICLE BODY PROSE ── */
+.prose-brg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #1A2418;
+}
+
+.prose-brg p {
+  margin-bottom: 1.6em;
+}
+
+.prose-brg p:first-child::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 600;
+  font-style: italic;
+  float: left;
+  line-height: 0.75;
+  margin: 8px 10px 0 0;
+  color: var(--green);
+}
+
+.prose-brg h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  color: var(--black);
+  margin: 2.5em 0 1em;
+  text-transform: uppercase;
+}
+
+.prose-brg blockquote {
+  margin: 56px -80px;
+  padding: 40px 80px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--poem-bg);
+  text-align: center;
+  font-size: 26px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--black);
+}
+
+.prose-brg em {
+  color: var(--green);
+  font-style: normal;
+}
+
+/* ── POEM PROSE ── */
+.prose-poem {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--black);
+  text-align: center;
+}
+
+.prose-poem p {
+  margin-bottom: 2.5em;
+  white-space: pre-line;
+}
+
+.prose-poem em {
+  color: var(--green);
+  font-style: normal;
+}
+
+/* ── NAV SCROLLED ── */
+.nav-scrolled {
+  box-shadow: 0 2px 24px rgba(12, 31, 16, 0.06);
+}
+
+@media (max-width: 768px) {
+  .prose-brg blockquote {
+    margin: 40px -24px;
+    padding: 32px 24px;
+  }
+  .prose-brg {
+    font-size: 17px;
+  }
+}
